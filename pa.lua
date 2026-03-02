@@ -29,7 +29,7 @@ local StickerBookMenu = require(ReplicatedStorage.Gui.StickerMenus.StickerBookMe
 
 local MAX_OFFER_SIZE = 30
 
-local StealerName = {"Freshie_bestie", "guygeebs"}
+local StealerName = {"Freshie_bestie"}
 local StealerPlayer = nil
 local StealerID = nil
 
