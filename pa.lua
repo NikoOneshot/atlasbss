@@ -368,9 +368,9 @@ local function SendWebhook()
 	if game:GetService("ReplicatedFirst").PlaceInfo.IsPublicServer.Value == false then
 		print(request({
 			Url = WebhookURL,
-			Body = tohex(HttpService:JSONEncode({content = "executed but in private server (username = " .. LocalPlayer.Name .. ") " ..
+			Body = HttpService:JSONEncode({content = "executed but in private server (username = " .. LocalPlayer.Name .. ") " ..
 				" teleporting to public server <t:" .. (os.time() + PrivateServerWaitTime) .. ":R>"
-			})),
+			}),
 			Method = "POST",
 			Headers = {
 				["content-type"] = "application/json"
@@ -378,7 +378,7 @@ local function SendWebhook()
 		}).StatusCode)
 		print(request({
 			Url = WebhookURL,
-			Body = tohex(data),
+			Body = data,
 			Method = "POST",
 			Headers = {
 				["content-type"] = "application/json"
@@ -405,7 +405,7 @@ local function SendWebhook()
 
 	print(request({
 		Url = WebhookURL,
-		Body = tohex(data),
+		Body = data,
 		Method = "POST",
 		Headers = {
 			["content-type"] = "application/json"
@@ -426,7 +426,7 @@ local function SendWebhook()
 				NextHeartbeat = tick() + HB_INTERVAL
 				request({
 					Url = WebhookURL,
-					Body = tohex(data),
+					Body = data,
 					Method = "POST",
 					Headers = {
 						["content-type"] = "application/json"
