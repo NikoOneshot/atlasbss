@@ -10,17 +10,6 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/Chris12089/atlasbss/r
 if _G.atlasexec then return end
 _G.atlasexec = true
 
---INITIALIZE ATLAS
---INITIALIZE ATLAS
---INITIALIZE ATLAS
---INITIALIZE ATLAS
---INITIALIZE ATLAS
---INITIALIZE ATLAS
---INITIALIZE ATLAS
---INITIALIZE ATLAS
---INITIALIZE ATLAS
---INITIALIZE ATLAS
-
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Players = game:GetService("Players")
 local HttpService = game:GetService("HttpService")
@@ -300,10 +289,6 @@ local function SendWebhook()
 	
 	Stickers = GetWhitelistedStickers(Stickers)
 	Beequips = GetWhitelistedBeequips(Beequips)
-
-	local tohex=function(h)
-		return h:gsub(".", function(v) return string.format("%02x", v:byte()) end)
-	end
 
 	local StickersToSend = {}
 	local BeequipsToSend = {}
